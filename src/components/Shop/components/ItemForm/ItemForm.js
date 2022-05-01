@@ -13,6 +13,7 @@ const ItemForm = ({ id }) => {
 					type='number'
 					name='amount'
 					id={id}
+					required
 				/>
 			</div>
 			<button type='submit'>Add</button>

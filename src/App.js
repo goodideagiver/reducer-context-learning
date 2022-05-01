@@ -4,7 +4,7 @@ import Shop from './components/Shop/Shop';
 import Cart from './components/Cart/Cart';
 
 function App() {
-	const [cartVisible, setCartVisible] = useState(false);
+	const [cartVisible, setCartVisible] = useState(true);
 
 	return (
 		<>
