@@ -5,7 +5,15 @@ const ItemForm = ({ id }) => {
 		<form className={classes.form}>
 			<div className={classes.controls}>
 				<label htmlFor={id}>Count</label>
-				<input defaultValue={1} type='number' name='amount' id={id} />
+				<input
+					min={1}
+					max={5}
+					step={1}
+					defaultValue={1}
+					type='number'
+					name='amount'
+					id={id}
+				/>
 			</div>
 			<button type='submit'>Add</button>
 		</form>
