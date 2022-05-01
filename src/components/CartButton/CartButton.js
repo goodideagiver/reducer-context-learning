@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { CartContext } from '../../store/cart-provider';
 
 const SCartButton = styled.button`
 	background-color: red;
@@ -23,11 +25,15 @@ const Blob = styled.div`
 	border-radius: 50%;
 `;
 
-const CartButton = () => {
+const CartButton = ({ onClick }) => {
+	const { cartState } = useContext(CartContext);
+
+	const itemsCount = cartState.items.length;
+
 	return (
-		<SCartButton>
+		<SCartButton onClick={onClick}>
 			<div>Cart</div>
-			<Blob>0</Blob>
+			<Blob>{itemsCount}</Blob>
 		</SCartButton>
 	);
 };

@@ -1,15 +1,13 @@
 import React, { useReducer } from 'react';
 
-const DEFAULT_CART = { items: [], totalPrice: 0,totalItems: 0 };
+const DEFAULT_CART = { items: [], totalPrice: 0, totalItems: 0 };
 
-const CartContext = React.createContext();
+export const CartContext = React.createContext();
 
 const cartReducer = (state, action) => {
 	switch (action.type) {
 		case 'ADD': {
-			const { item } = action;
-      if (state.items.inde)
-			return;
+			return { ...state, items: [...state.items, action.item] };
 		}
 		case 'REMOVE': {
 			return;

@@ -1,11 +1,11 @@
 import CartButton from '../CartButton/CartButton';
 import classes from './Nav.module.css';
 
-const Nav = () => {
+const Nav = ({ onClick }) => {
 	return (
 		<nav className={classes.nav}>
 			<h1>THE BEST SHOP EVER</h1>
-			<CartButton/>
+			<CartButton onClick={onClick} />
 		</nav>
 	);
 };
