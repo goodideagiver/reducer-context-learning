@@ -4,6 +4,23 @@ import ReactDOM from 'react-dom';
 
 import classes from './Modal.module.css';
 
+import styled from 'styled-components';
+
+const ModalHeader = styled.header`
+	display: flex;
+	justify-content: space-between;
+`;
+
+const CloseBtn = styled.button`
+	background: 0;
+	border: 0;
+	cursor: pointer;
+
+	&:hover {
+		color: purple;
+	}
+`;
+
 const Backdrop = ({ onClose, className }) => {
 	return <div className={className} onClick={onClose} />;
 };
@@ -11,7 +28,10 @@ const Backdrop = ({ onClose, className }) => {
 const Content = (props) => {
 	return (
 		<div className={props.className}>
-			<header>{props.title}</header>
+			<ModalHeader>
+				<h2>{props.title}</h2>
+				<CloseBtn onClick={props.onClose}>Close</CloseBtn>
+			</ModalHeader>
 			<main>{props.children}</main>
 		</div>
 	);
