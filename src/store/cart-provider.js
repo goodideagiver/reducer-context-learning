@@ -47,6 +47,23 @@ const cartReducer = (state, action) => {
 
 			return;
 		}
+		case 'DELETE': {
+			console.log(action);
+			const newPrice =
+				state.totalPrice - action.item.count * action.item.price;
+
+			const newTotal = state.totalItems - action.item.count;
+
+			const newItems = state.items.filter(
+				(el) => el.id !== action.item.id
+			);
+
+			return {
+				totalPrice: newPrice,
+				totalItems: newTotal,
+				items: newItems,
+			};
+		}
 		default: {
 			return state;
 		}

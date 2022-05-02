@@ -18,7 +18,7 @@ const Cart = ({ onClose, ...props }) => {
 
 	return (
 		<Modal onClose={onClose} title='Cart'>
-			<Items />
+			<Items cartState={cartState} />
 			<footer>
 				<SumDiv>
 					<span>Total price: </span>

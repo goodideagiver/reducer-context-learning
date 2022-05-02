@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import { CartContext } from '../../store/cart-provider';
 import Item from './Item';
-import { useContext } from 'react';
 
 const SItems = styled.ul`
 	list-style: none;
@@ -9,19 +7,17 @@ const SItems = styled.ul`
 	margin: 0;
 `;
 
-const Items = () => {
-	const { cartState } = useContext(CartContext);
-
+const Items = ({ cartState }) => {
 	const items = cartState.items;
 
-	if (!items) {
-		return;
+	if (items.length === 0) {
+		return <p>There are no items in your cart</p>;
 	}
 
 	return (
 		<SItems>
 			{items.map((item) => (
-				<Item item={item} />
+				<Item key={item.id} item={item} />
 			))}
 		</SItems>
 	);
