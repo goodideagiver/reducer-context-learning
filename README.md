@@ -1,3 +1,7 @@
+Demo: https://goodideagiver.github.io/reducer-context-learning/
+
+It's not optimized for mobile
+
 # Shopping cart
 
 ## Small project for learning React
