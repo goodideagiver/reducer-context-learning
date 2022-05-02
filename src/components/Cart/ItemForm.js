@@ -6,7 +6,9 @@ import { CartContext } from '../../store/cart-provider';
 const ItemForm = ({ item }) => {
 	const { cartDispatch } = useContext(CartContext);
 
-	const addItemBtnHandler = () => {};
+	const addItemBtnHandler = () => {
+		cartDispatch({ type: 'ADD', item: { ...item, count: 1 } });
+	};
 
 	const removeItemBtnHandler = () => {
 		cartDispatch({ type: 'REMOVE', item: item });

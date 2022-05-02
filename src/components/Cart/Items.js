@@ -7,11 +7,20 @@ const SItems = styled.ul`
 	margin: 0;
 `;
 
+const NoItems = styled.p`
+	background: purple;
+	font-size: 2rem;
+	color: white;
+	text-align: center;
+	padding: 1rem;
+	border-radius: 1rem;
+`;
+
 const Items = ({ cartState }) => {
 	const items = cartState.items;
 
 	if (items.length === 0) {
-		return <p>There are no items in your cart</p>;
+		return <NoItems>There are no items in your cart 😐</NoItems>;
 	}
 
 	return (
