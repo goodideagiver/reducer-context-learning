@@ -8,7 +8,9 @@ const ItemForm = ({ item }) => {
 
 	const addItemBtnHandler = () => {};
 
-	const removeItemBtnHandler = () => {};
+	const removeItemBtnHandler = () => {
+		cartDispatch({ type: 'REMOVE', item: item });
+	};
 
 	const deleteItemBtnHandler = () => {
 		cartDispatch({ type: 'DELETE', item: item });
