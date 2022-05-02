@@ -8,13 +8,17 @@ const StyledItem = styled.li`
 `;
 
 const Item = ({ item }) => {
-	const { name, price } = item;
+	const { name, price, count } = item;
 
 	const formattedPrice = `$${price.toFixed(2)}`;
 
 	return (
 		<StyledItem>
 			<div>{name}</div>
+			<div>
+				<span>x </span>
+				<span>{count}</span>
+			</div>
 			<div>{formattedPrice}</div>
 		</StyledItem>
 	);

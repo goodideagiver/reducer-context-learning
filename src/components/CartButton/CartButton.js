@@ -28,7 +28,7 @@ const Blob = styled.div`
 const CartButton = ({ onClick }) => {
 	const { cartState } = useContext(CartContext);
 
-	const itemsCount = cartState.items.length;
+	const itemsCount = cartState.totalItems;
 
 	return (
 		<SCartButton onClick={onClick}>

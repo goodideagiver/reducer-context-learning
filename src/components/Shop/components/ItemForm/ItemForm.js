@@ -1,14 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import classes from './ItemForm.module.css';
 
 import { CartContext } from '../../../../store/cart-provider';
 
 const ItemForm = ({ id, item }) => {
 	const { cartDispatch } = useContext(CartContext);
+	const input = useRef();
 
 	const itemFormSubmitHandler = (ev) => {
 		ev.preventDefault();
-		cartDispatch({ type: 'ADD', item });
+		cartDispatch({
+			type: 'ADD',
+			item: { ...item, count: input.current.value },
+		});
 	};
 
 	return (
@@ -16,6 +20,7 @@ const ItemForm = ({ id, item }) => {
 			<div className={classes.controls}>
 				<label htmlFor={id}>Count</label>
 				<input
+					ref={input}
 					min={1}
 					max={5}
 					step={1}
