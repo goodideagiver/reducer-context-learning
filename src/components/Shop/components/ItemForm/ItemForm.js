@@ -8,6 +8,7 @@ const ItemForm = ({ id, item }) => {
 	const input = useRef();
 
 	const itemFormSubmitHandler = (ev) => {
+		console.log('clicked');
 		ev.preventDefault();
 		cartDispatch({
 			type: 'ADD',
