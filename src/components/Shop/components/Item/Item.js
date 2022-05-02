@@ -12,7 +12,7 @@ const Item = ({ item }) => {
 			</div>
 			<div className={classes.form}>
 				<span>{convertPrice}</span>
-				<ItemForm id={item.id} item={item} />
+				<ItemForm item={item} />
 			</div>
 		</li>
 	);

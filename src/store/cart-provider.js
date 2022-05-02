@@ -7,39 +7,33 @@ export const CartContext = React.createContext();
 const cartReducer = (state, action) => {
 	switch (action.type) {
 		case 'ADD': {
-			const foundItemIndex = state.items.findIndex(
-				(it) => it.id === action.item.id
-			);
+			let newTotal = +state.totalItems + +action.item.count;
 
-			const foundItem = state.items[foundItemIndex];
+			//find if item exists in the cart already
+			if (state.items.length) {
+				const existingItemIndex = state.items.findIndex(
+					(existingItem) => existingItem.id === action.item.id
+				);
 
-			if (foundItem) {
-				const newStateItems = [...state.items];
-				newStateItems[foundItemIndex].count =
-					+newStateItems[foundItemIndex].count + +action.item.count;
+				const existingItem = state.items[existingItemIndex];
+				if (existingItem) {
+					const updatedItem = {
+						...existingItem,
+						count: existingItem.count + action.item.count,
+					};
 
-				let newTotal;
-				const itemsCounts = newStateItems.map((el) => el.count);
-				if (itemsCounts.length > 1) {
-					newTotal = itemsCounts.reduce((a, b) => a + b, 0);
-				} else {
-					newTotal = itemsCounts[0];
+					const updatedItems = [...state.items];
+					updatedItems[existingItemIndex] = updatedItem;
+
+					return {
+						...state,
+						totalItems: newTotal,
+						items: updatedItems,
+					};
 				}
-
-				return {
-					...state,
-					totalItems: newTotal,
-					items: [...newStateItems],
-				};
 			}
 
-			let newTotal;
 			const newItems = [...state.items, action.item];
-			if (newItems.length > 1) {
-				newTotal = newItems.reduce((a, b) => a.count + b.count, 0);
-			} else {
-				newTotal = newItems[0].count;
-			}
 			return {
 				...state,
 				totalItems: newTotal,
