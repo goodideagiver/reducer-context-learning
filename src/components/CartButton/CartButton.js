@@ -23,6 +23,8 @@ const Blob = styled.div`
 	background-color: black;
 	color: white;
 	border-radius: 50%;
+	width: 10px;
+	height: 10px;
 `;
 
 const CartButton = ({ onClick }) => {

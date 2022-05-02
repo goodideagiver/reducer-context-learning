@@ -8,6 +8,8 @@ const cartReducer = (state, action) => {
 	switch (action.type) {
 		case 'ADD': {
 			let newTotal = +state.totalItems + +action.item.count;
+			let newPrice =
+				+state.totalPrice + +action.item.price * action.item.count;
 
 			//find if item exists in the cart already
 			if (state.items.length) {
@@ -26,7 +28,7 @@ const cartReducer = (state, action) => {
 					updatedItems[existingItemIndex] = updatedItem;
 
 					return {
-						...state,
+						totalPrice: newPrice,
 						totalItems: newTotal,
 						items: updatedItems,
 					};
@@ -35,13 +37,13 @@ const cartReducer = (state, action) => {
 
 			const newItems = [...state.items, action.item];
 			return {
-				...state,
+				totalPrice: newPrice,
 				totalItems: newTotal,
 				items: newItems,
 			};
 		}
 		case 'REMOVE': {
-			const newTotal = state.totalItems--;
+			const newTotal = state.totalItems - action.item.count;
 
 			return;
 		}
