@@ -22,9 +22,7 @@ const Blob = styled.div`
 	padding: 1rem;
 	background-color: black;
 	color: white;
-	border-radius: 50%;
-	width: 10px;
-	height: 10px;
+	border-radius: 1rem;
 `;
 
 const CartButton = ({ onClick }) => {
